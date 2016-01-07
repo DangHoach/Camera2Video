@@ -1,0 +1,26 @@
+package com.example.android.camera2video;
+
+import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceActivity;
+import android.preference.SwitchPreference;
+
+public class SettingActivity extends PreferenceActivity {
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+   super.onCreate(savedInstanceState);
+   addPreferencesFromResource(R.xml.prefs);
+
+   SwitchPreference pref = (SwitchPreference) findPreference("camera_switch");
+
+   pref.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+
+      @Override
+      public boolean onPreferenceChange(Preference preference, Object newValue) {
+         // Here you can enable/disable whatever you need to
+         return true;
+      }
+   });
+
+}
+}

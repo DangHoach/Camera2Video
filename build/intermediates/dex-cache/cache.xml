@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/applelike/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.0/support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="/Users/applelike/Desktop/Camera2Video/Application/build/intermediates/pre-dexed/debug/support-annotations-23.1.0-6a0da8198ed010ac1d2fb6951cca1ccbb095c618.jar" />
+    </item>
+    <item
+        jar="/Users/applelike/Desktop/Camera2Video/Application/build/intermediates/exploded-aar/com.android.support/support-v13/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1a57337a520bf40b9ad1e074cb780527dffa1aac">
+        <dex dex="/Users/applelike/Desktop/Camera2Video/Application/build/intermediates/pre-dexed/debug/classes-38e251796c157d9d59b319b4e8a42071b384a4f4.jar" />
+    </item>
+    <item
+        jar="/Users/applelike/Desktop/Camera2Video/Application/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="/Users/applelike/Desktop/Camera2Video/Application/build/intermediates/pre-dexed/debug/classes-5a268b6d2f065c6248730fc9c23a8cb57481f877.jar" />
+    </item>
+    <item
+        jar="/Users/applelike/Desktop/Camera2Video/Application/build/intermediates/exploded-aar/com.android.support/support-v13/23.1.0/jars/libs/internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="076c7d9e22cc325b8008ff799e0c06dfb8eefdf3">
+        <dex dex="/Users/applelike/Desktop/Camera2Video/Application/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-26695dd7b6ae09b65f245ccd7e585111988d48dc.jar" />
+    </item>
+    <item
+        jar="/Users/applelike/Desktop/Camera2Video/Application/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="/Users/applelike/Desktop/Camera2Video/Application/build/intermediates/pre-dexed/debug/classes-1d96927d8d82fc593f23209bd7fd75a503522e1b.jar" />
+    </item>
+    <item
+        jar="/Users/applelike/Desktop/Camera2Video/Application/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/libs/internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="/Users/applelike/Desktop/Camera2Video/Application/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-4c97b3665a2c36573112760df8870290c55035db.jar" />
+    </item>
+    <item
+        jar="/Users/applelike/Desktop/Camera2Video/Application/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d96886efea7cc74fbb3abd0e3b51d5638fc57be0">
+        <dex dex="/Users/applelike/Desktop/Camera2Video/Application/build/intermediates/pre-dexed/debug/classes-d07b85e7cfb6c5f17a5e25021ffb87298a465a3a.jar" />
+    </item>
+
+</items>

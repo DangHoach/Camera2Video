@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\DevTools\Android\SDK\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="C:\Users\DangHoach\Desktop\Camera2Video\Application\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-9e7510001d658dab0c4d0c0b1b2d803c1ed78faa.jar" />
+    </item>
+    <item
+        jar="C:\Users\DangHoach\Desktop\Camera2Video\Application\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="C:\Users\DangHoach\Desktop\Camera2Video\Application\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-439d5f697d30f8dd931d340de958287e9d79f098.jar" />
+    </item>
+    <item
+        jar="C:\Users\DangHoach\Desktop\Camera2Video\Application\build\intermediates\exploded-aar\com.android.support\cardview-v7\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="d96886efea7cc74fbb3abd0e3b51d5638fc57be0">
+        <dex dex="C:\Users\DangHoach\Desktop\Camera2Video\Application\build\intermediates\pre-dexed\debug\classes-954b9e8ada2cc2c7bfb98f35826c5b88a0b80312.jar" />
+    </item>
+    <item
+        jar="C:\Users\DangHoach\Desktop\Camera2Video\Application\build\intermediates\exploded-aar\com.android.support\support-v13\23.1.0\jars\libs\internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="076c7d9e22cc325b8008ff799e0c06dfb8eefdf3">
+        <dex dex="C:\Users\DangHoach\Desktop\Camera2Video\Application\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-000564602ec5888917d286df6a337a34f324dc23.jar" />
+    </item>
+    <item
+        jar="C:\Users\DangHoach\Desktop\Camera2Video\Application\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.0.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="4fcf0b1879f8caf497c073e1432d398e9e2988c1">
+        <dex dex="C:\Users\DangHoach\Desktop\Camera2Video\Application\build\intermediates\pre-dexed\debug\classes-78019112227282d61f4cc90e9fea632d8218e80d.jar" />
+    </item>
+    <item
+        jar="C:\Users\DangHoach\Desktop\Camera2Video\Application\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="C:\Users\DangHoach\Desktop\Camera2Video\Application\build\intermediates\pre-dexed\debug\classes-1c8e22647dff3e92eaf2173f9bdd6a155feb623e.jar" />
+    </item>
+    <item
+        jar="C:\Users\DangHoach\Desktop\Camera2Video\Application\build\intermediates\exploded-aar\com.android.support\support-v13\23.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="1a57337a520bf40b9ad1e074cb780527dffa1aac">
+        <dex dex="C:\Users\DangHoach\Desktop\Camera2Video\Application\build\intermediates\pre-dexed\debug\classes-becefa10b8110a94d6e614a112dceb969405d8e3.jar" />
+    </item>
+
+</items>

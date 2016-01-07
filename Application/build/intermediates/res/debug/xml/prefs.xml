@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+
+ <PreferenceCategory
+   android:summary="Resolution information"
+   android:title="Settings">
+
+    <SwitchPreference
+     android:defaultValue="true"
+     android:title="Camera Status State"
+     android:summaryOn="Font Camera On"
+     android:summaryOff="Font Camera Off"
+     android:key="camera_switch"
+     />
+    <!--<CheckBoxPreference-->
+         <!--android:defaultValue="false"-->
+         <!--android:key="prefLockScreen"-->
+         <!--android:summary="Lock The Screen With Password"-->
+         <!--android:title="Screen Lock" >-->
+     <!--</CheckBoxPreference>-->
+    <ListPreference
+        android:key="listpref"
+        android:title="List Resolution "
+        android:entries="@array/listOptions"
+        android:entryValues="@array/listValues"
+        android:summary="%s"
+        android:defaultValue="1280x720"
+         />
+
+    <Preference android:title="web page support" >
+        <intent android:action="android.intent.action.VIEW"
+            android:data="http://www.google.com" />
+    </Preference>
+ </PreferenceCategory>
+</PreferenceScreen><!-- From: file:/Users/applelike/Desktop/Camera2Video/Application/src/main/res/xml/prefs.xml -->

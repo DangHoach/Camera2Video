@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switchcamera"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="58dp"
+        android:checked="true"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Video Resolution"
+        android:layout_below="@+id/switchcamera"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/videoresolution"
+        android:textColor="#757575"
+        android:textSize="20sp"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentBottom="false"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="resolution"
+        android:id="@+id/resolution"
+        android:layout_below="@+id/videoresolution"
+        android:textColor="#e0e0e0"
+        android:textSize="16sp"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="100dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Back Camera"
+        android:id="@+id/switchStatus"
+        android:layout_above="@+id/videoresolution"
+        android:foregroundGravity="center|center_vertical"
+        android:layout_alignTop="@+id/switchcamera"
+        android:layout_alignStart="@+id/videoresolution"
+        android:layout_toStartOf="@+id/switchcamera" />
+
+</RelativeLayout>

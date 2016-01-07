@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="record">Record</string>
+    <string name="stop">Stop</string>
+    <string name="description_info">Info</string>
+    <string name="permission_request">This sample needs permission for camera and audio recording.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+
+    <string-array name="choices">
+        <item>3840x2160</item>
+        <item>3264x2448</item>
+        <item>1920x1080</item>
+        <item>1600x1200</item>
+        <item>1280x720</item>
+        <item>800x600</item>
+    </string-array>
+</resources>
