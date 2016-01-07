@@ -13,12 +13,6 @@
      android:summaryOff="Font Camera Off"
      android:key="camera_switch"
      />
-    <!--<CheckBoxPreference-->
-         <!--android:defaultValue="false"-->
-         <!--android:key="prefLockScreen"-->
-         <!--android:summary="Lock The Screen With Password"-->
-         <!--android:title="Screen Lock" >-->
-     <!--</CheckBoxPreference>-->
     <ListPreference
         android:key="listpref"
         android:title="List Resolution "
