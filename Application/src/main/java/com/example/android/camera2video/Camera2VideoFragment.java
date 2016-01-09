@@ -28,6 +28,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
+
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v13.app.FragmentCompat;
@@ -149,6 +150,8 @@ public class Camera2VideoFragment extends Fragment
      */
     private Size mVideoSize;
 
+    public static int mvalueVideoSize;
+
     /**
      * Camera preview.
      */
@@ -230,7 +233,7 @@ public class Camera2VideoFragment extends Fragment
      */
     private static Size chooseVideoSize(Size[] choices) {
         for (Size size : choices) {
-            if (size.getWidth() == size.getHeight() * 4 / 3 && size.getWidth() <= 1080) {
+            if (size.getWidth() == size.getHeight() * 16 / 9 && size.getHeight() <= 1080) {
                 return size;
             }
         }
@@ -256,7 +259,7 @@ public class Camera2VideoFragment extends Fragment
         int h = aspectRatio.getHeight();
         for (Size option : choices) {
             if (option.getHeight() == option.getWidth() * h / w &&
-                    option.getWidth() >= width && option.getHeight() >= height) {
+                    option.getWidth() <= width && option.getHeight() <= height) {
                 bigEnough.add(option);
             }
         }
@@ -301,97 +304,76 @@ public class Camera2VideoFragment extends Fragment
             @Override
             public int transform(int value) {
                 int temp = 30;
-                if (0 <= value && value < 4)
-                {
+                if (0 <= value && value < 4) {
                     temp = 1;
                 }
-                if (4 <= value && value < 8)
-                {
+                if (4 <= value && value < 8) {
                     temp = 2;
                 }
-                if (8 <= value && value < 12)
-                {
+                if (8 <= value && value < 12) {
                     temp = 4;
                 }
-                if (12 <= value && value < 16)
-                {
+                if (12 <= value && value < 16) {
                     temp = 6;
                 }
-                if (16 <= value && value < 20)
-                {
+                if (16 <= value && value < 20) {
                     temp = 8;
                 }
-                if (20 <= value && value < 24)
-                {
+                if (20 <= value && value < 24) {
                     temp = 15;
                 }
-                if (24 <= value && value < 28)
-                {
+                if (24 <= value && value < 28) {
                     temp = 30;
                 }
-                if (28 <= value && value < 32)
-                {
+                if (28 <= value && value < 32) {
                     temp = 60;
                 }
-                if (32 <= value && value < 36)
-                {
+                if (32 <= value && value < 36) {
                     temp = 100;
                 }
-                if (36 <= value && value < 40)
-                {
+                if (36 <= value && value < 40) {
                     temp = 125;
                 }
-                if (40 <= value && value < 44)
-                {
+                if (40 <= value && value < 44) {
                     temp = 250;
                 }
-                if (44 <= value && value < 48)
-                {
+                if (44 <= value && value < 48) {
                     temp = 500;
-                }if (48 <= value && value < 52)
-                {
+                }
+                if (48 <= value && value < 52) {
                     temp = 750;
-                }if (52 <= value && value < 56)
-                {
+                }
+                if (52 <= value && value < 56) {
                     temp = 1000;
-                }if (56 <= value && value < 60)
-                {
+                }
+                if (56 <= value && value < 60) {
                     temp = 1500;
                 }
-                if (60 <= value && value < 64)
-                {
+                if (60 <= value && value < 64) {
                     temp = 2000;
                 }
-                if (64 <= value && value < 68)
-                {
+                if (64 <= value && value < 68) {
                     temp = 3000;
                 }
-                if (68 <= value && value < 72)
-                {
+                if (68 <= value && value < 72) {
                     temp = 4000;
                 }
-                if (72 <= value && value < 76)
-                {
+                if (72 <= value && value < 76) {
                     temp = 6000;
                 }
-                if (76 <= value && value < 80)
-                {
+                if (76 <= value && value < 80) {
                     temp = 8000;
                 }
-                if (80 <= value && value < 84)
-                {
+                if (80 <= value && value < 84) {
                     temp = 10000;
                 }
-                if (84 <= value && value < 92)
-                {
+                if (84 <= value && value < 92) {
                     temp = 20000;
                 }
-                if (92 <= value && value < 96)
-                {
+                if (92 <= value && value < 96) {
                     temp = 30000;
                 }
-                if (96 <= value && value < 100)
-                {
+                if (96 <= value && value < 100) {
                     temp = 800000;
                 }
                 return temp;
@@ -463,18 +445,68 @@ public class Camera2VideoFragment extends Fragment
     private void displayUserSettings()
     {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        String prefList = sharedPrefs.getString("listpref", "NULL");
         boolean isChecked = sharedPrefs.getBoolean("camera_switch", false);
+
         if (!isChecked)
         {
             mCameraId = "0";
             startBackgroundThread();
             if (mTextureView.isAvailable())
             {
-                reOpenCamera(mTextureView.getWidth(), mTextureView.getHeight());
+                openCamera(mTextureView.getWidth(), mTextureView.getHeight());
             }
             else
             {
                 mTextureView.setSurfaceTextureListener(mSurfaceTextureListener);
+            }
+
+            switch (prefList)
+            {
+                case "3264x2448":
+                    mvalueVideoSize = 0;
+//                    Log.d(TAG, "-3264x2448");
+                    break;
+                case "3200x2400":
+                    mvalueVideoSize = 1;
+//                    Log.d(TAG, "-3200x2400");
+                    break;
+                case "2592x1944":
+                    mvalueVideoSize = 2;
+//                    Log.d(TAG, "-2592x1944");
+                    break;
+                case "2048x1536":
+                    mvalueVideoSize = 3;
+//                    Log.d(TAG, "-2048x1536");
+                    break;
+                case "1920x1080":
+                    mvalueVideoSize = 4;
+//                    Log.d(TAG, "-1920x1080");
+                    break;
+                case "1600x1200":
+                    mvalueVideoSize = 5;
+//                    Log.d(TAG, "-1600x1200");
+                    break;
+                case "1280x960":
+                    mvalueVideoSize = 6;
+//                    Log.d(TAG, "-1280x960");
+                    break;
+                case "1280x768":
+                    mvalueVideoSize = 7;
+//                    Log.d(TAG, "-1280x768");
+                    break;
+                case "1280x720":
+                    mvalueVideoSize = 8;
+//                    Log.d(TAG, "-1280x720");
+                    break;
+                case "1024x768":
+                    mvalueVideoSize = 9;
+//                    Log.d(TAG, "-1024x768");
+                    break;
+                default:
+                    mvalueVideoSize = 5;
+//                    Log.d(TAG, "-default-1280x720");
+                    break;
             }
         }
         else
@@ -483,16 +515,13 @@ public class Camera2VideoFragment extends Fragment
             startBackgroundThread();
             if (mTextureView.isAvailable())
             {
-                reOpenCamera(mTextureView.getWidth(), mTextureView.getHeight());
+                openCamera(mTextureView.getWidth(), mTextureView.getHeight());
             }
             else
             {
                 mTextureView.setSurfaceTextureListener(mSurfaceTextureListener);
             }
         }
-        String prefList = sharedPrefs.getString("listpref", "no selection");
-        Log.d(TAG, "----------------------------------------" + prefList);
-
     }
 
 
@@ -590,17 +619,72 @@ public class Camera2VideoFragment extends Fragment
             return;
         }
         mCameraManager = (CameraManager) activity.getSystemService(Context.CAMERA_SERVICE);
+
         try {
-            Log.d(TAG, "tryAcquire");
+//            Log.d(TAG, "tryAcquire");
             if (!mCameraOpenCloseLock.tryAcquire(2500, TimeUnit.MILLISECONDS)) {
                 throw new RuntimeException("Time out waiting to lock camera opening.");
             }
             // Choose the sizes for camera preview and video recording
             CameraCharacteristics characteristics = mCameraManager.getCameraCharacteristics(mCameraId);
+
+
             StreamConfigurationMap map = characteristics
                     .get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
-            mVideoSize = chooseVideoSize(map.getOutputSizes(MediaRecorder.class));
-            Log.d(TAG, "tryAcquire");
+//            mVideoSize = chooseVideoSize(map.getOutputSizes(MediaRecorder.class));
+//            mVideoSize = Collections.max(Arrays.asList(map.getOutputSizes(ImageFormat.JPEG)), new CompareSizesByArea());//            mVideoSize = sizes[5];
+//            final Size sizeLow = sizes[5];
+//            final Size sizeHigh = sizes[0];
+//            Size[] sizes2 = map.getOutputSizes(MediaRecorder.class);
+//            for(int i = 0 ; i<= 5; i++)
+//            {
+//                final Size sizedetect = sizes2[i];
+//                Log.d(TAG, "-----------------------------------------sizedetect"+sizedetect.getWidth()+"--"+sizedetect.getHeight());
+//            }
+            Size[] sizes = map.getOutputSizes(MediaRecorder.class);
+
+            switch (mvalueVideoSize)
+            {
+                case 0:
+                    mVideoSize = sizes[0];
+                    break;
+                case 1:
+                    mVideoSize = sizes[1];
+                    break;
+                case 2:
+                    mVideoSize = sizes[2];
+                    break;
+                case 3:
+                    mVideoSize = sizes[3];
+                    break;
+                case 4:
+                    mVideoSize = sizes[4];
+                    break;
+                case 5:
+                    mVideoSize = sizes[5];
+                    break;
+                case 6:
+                    mVideoSize = sizes[6];
+                    break;
+                case 7:
+                    mVideoSize = sizes[7];
+                    break;
+                case 8:
+                    mVideoSize = sizes[8];
+                    break;
+                case 9:
+                    mVideoSize = sizes[9];
+                    break;
+                default:
+                    mVideoSize = sizes[8];
+                    break;
+
+            }
+            if(mCameraId.contains("1"))
+            {
+                mVideoSize = sizes[8];
+            }
+//            Log.d(TAG, "--size select"+mVideoSize.getWidth()+"--"+mVideoSize.getHeight());
             mPreviewSize = chooseOptimalSize(map.getOutputSizes(SurfaceTexture.class),
                     width, height, mVideoSize);
 
@@ -626,47 +710,6 @@ public class Camera2VideoFragment extends Fragment
         }
     }
 
-    private void reOpenCamera(int viewWidth, int viewHeight) {
-
-        try {
-            mCameraOpenCloseLock.acquire();
-            if (null != mCameraDevice) {
-                mCameraDevice.close();
-                mCameraDevice = null;
-            }
-            if (null != mMediaRecorder) {
-                mMediaRecorder.release();
-                mMediaRecorder = null;
-            }
-        } catch (InterruptedException e) {
-            throw new RuntimeException("Interrupted while trying to lock camera closing.");
-        } finally {
-            mCameraOpenCloseLock.release();
-        }
-
-        try {
-            CameraCharacteristics characteristics = mCameraManager.getCameraCharacteristics(mCameraId);
-            StreamConfigurationMap map = characteristics
-                    .get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
-            mVideoSize = chooseVideoSize(map.getOutputSizes(MediaRecorder.class));
-            mPreviewSize = chooseOptimalSize(map.getOutputSizes(SurfaceTexture.class),
-                    viewWidth, viewHeight, mVideoSize);
-
-            int orientation = getResources().getConfiguration().orientation;
-            if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                mTextureView.setAspectRatio(mPreviewSize.getWidth(), mPreviewSize.getHeight());
-            } else {
-                mTextureView.setAspectRatio(mPreviewSize.getHeight(), mPreviewSize.getWidth());
-            }
-            configureTransform(viewWidth, viewHeight);
-            mMediaRecorder = new MediaRecorder();
-            mCameraManager.openCamera(mCameraId, mStateCallback, null);
-
-        } catch (CameraAccessException e) {
-
-            e.printStackTrace();
-        }
-    }
     private void closeCamera() {
         try {
             mCameraOpenCloseLock.acquire();
@@ -811,12 +854,13 @@ public class Camera2VideoFragment extends Fragment
         mMediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
         mMediaRecorder.setVideoSource(MediaRecorder.VideoSource.SURFACE);
         mMediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.MPEG_4);
-		mMediaRecorder.setAudioChannels(2);
-		mMediaRecorder.setAudioEncodingBitRate(384000);
-		mMediaRecorder.setAudioSamplingRate(44100);
+        mMediaRecorder.setAudioChannels(2);
+        mMediaRecorder.setAudioEncodingBitRate(384000);
+        mMediaRecorder.setAudioSamplingRate(44100);
         mMediaRecorder.setOutputFile(getVideoFile(activity).getAbsolutePath());
         mMediaRecorder.setVideoEncodingBitRate(10000000);
         mMediaRecorder.setVideoFrameRate(30);
+//        Log.d(TAG, "----setVideoSize " + mVideoSize.getWidth() + "----" + mVideoSize.getHeight());
         mMediaRecorder.setVideoSize(mVideoSize.getWidth(), mVideoSize.getHeight());
         mMediaRecorder.setVideoEncoder(MediaRecorder.VideoEncoder.H264);
         mMediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AAC);

@@ -1348,19 +1348,27 @@
         <attr format="color|reference" name="dsb_rippleColor"/>
         <attr format="boolean" name="dsb_indicatorPopupEnabled"/>
     </declare-styleable></file><file path="/Users/applelike/Desktop/Camera2Video/Application/src/main/res/values/base-strings.xml" qualifiers=""><string-array name="listOptions">
-        <item>3840 x 2160</item>
         <item>3264 x 2448</item>
+        <item>3200 x 2400</item>
+        <item>2592 x 1944</item>
+        <item>2048 x 1536</item>
         <item>1920 x 1080</item>
         <item>1600 x 1200</item>
+        <item>1280 x 960</item>
+        <item>1280 x 768</item>
         <item>1280 x 720</item>
-        <item>800 x 600</item>
+        <item>1024 x 768</item>
     </string-array><string name="app_name">VideoShutter</string><string-array name="listValues">
-        <item>3840x2160</item>
         <item>3264x2448</item>
+        <item>3200x2400</item>
+        <item>2592x1944</item>
+        <item>2048x1536</item>
         <item>1920x1080</item>
         <item>1600x1200</item>
+        <item>1280x960</item>
+        <item>1280x768</item>
         <item>1280x720</item>
-        <item>800x600</item>
+        <item>1024x768</item>
     </string-array></file><file path="/Users/applelike/Desktop/Camera2Video/Application/src/main/res/values/colors.xml" qualifiers=""><color name="advance_setting_item_bg">#f8f8f8</color><color name="popup_title_color">#c9cdd1</color><color name="common_title_text">#565555</color></file><file path="/Users/applelike/Desktop/Camera2Video/Application/src/main/res/values/strings.xml" qualifiers=""><string name="menu_settings">Settings</string><string name="record">Record</string><string name="description_info">Info</string><string name="stop">Stop</string><string name="permission_request">This sample needs permission for camera and audio recording.</string><string name="camera_error">This device doesn\'t support Camera2 API.</string></file><file path="/Users/applelike/Desktop/Camera2Video/Application/src/main/res/values/styles.xml" qualifiers=""><color name="dsb_disabled_color">#66939393</color><style name="Widget.DiscreteIndicatorTextAppearance" parent="android:TextAppearance.Small">
         <item name="android:textColor">?android:attr/textColorPrimaryInverse</item>
         <item name="android:padding">6dp</item>

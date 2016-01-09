@@ -2,8 +2,7 @@ package com.example.android.camera2video;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.ImageFormat;
-import android.util.Size;
+
 
 public class PreferenceHelper {
     /**

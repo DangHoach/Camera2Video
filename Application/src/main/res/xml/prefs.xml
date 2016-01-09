@@ -7,21 +7,23 @@
    android:title="Settings">
 
     <SwitchPreference
+     android:key="camera_switch"
+     android:disableDependentsState="true"
      android:defaultValue="true"
      android:title="Camera Status State"
      android:summaryOn="Font Camera On"
      android:summaryOff="Font Camera Off"
-     android:key="camera_switch"
      />
-    <ListPreference
-        android:key="listpref"
-        android:title="List Resolution "
-        android:entries="@array/listOptions"
-        android:entryValues="@array/listValues"
-        android:summary="%s"
-        android:defaultValue="1280x720"
-         />
 
+     <ListPreference
+         android:key="listpref"
+         android:title="List Resolution "
+         android:entries="@array/listOptions"
+         android:entryValues="@array/listValues"
+         android:summary="%s"
+         android:defaultValue="1280x720"
+         android:dependency="camera_switch"
+         />
     <Preference android:title="web page support" >
         <intent android:action="android.intent.action.VIEW"
             android:data="http://www.google.com" />
