@@ -641,19 +641,20 @@ public class DiscreteSeekBar extends View {
 
         //Anyways, I see the memory usage still go up on every call to this method
         //and I have no clue on how to fix that... damn Strings...
-//        if (mFormatter == null || !mFormatter.locale().equals(Locale.getDefault())) {
-//            int bufferSize = format.length() + String.valueOf(mMax).length();
-//            if (mFormatBuilder == null) {
-//                mFormatBuilder = new StringBuilder(bufferSize);
-//            } else {
-//                mFormatBuilder.ensureCapacity(bufferSize);
-//            }
-//            mFormatter = new Formatter(mFormatBuilder, Locale.getDefault());
-//        } else {
-//            mFormatBuilder.setLength(0);
-//        }
+        if (mFormatter == null || !mFormatter.locale().equals(Locale.getDefault())) {
+            int bufferSize = format.length() + String.valueOf(mMax).length();
+            if (mFormatBuilder == null) {
+                mFormatBuilder = new StringBuilder(bufferSize);
+            } else {
+                mFormatBuilder.ensureCapacity(bufferSize);
+            }
+            mFormatter = new Formatter(mFormatBuilder, Locale.getDefault());
+        } else {
+            mFormatBuilder.setLength(0);
+        }
 //        return mFormatter.format(format, value).toString();
-        return String.valueOf(value );
+        return mFormatter.format("1/%d", value).toString();
+//        return String.valueOf(value );
     }
 
     @Override

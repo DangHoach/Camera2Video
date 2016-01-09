@@ -302,79 +302,80 @@ public class Camera2VideoFragment extends Fragment
         discreteSeekBar = (DiscreteSeekBar) view.findViewById(R.id.discrete1);
         discreteSeekBar.setNumericTransformer(new DiscreteSeekBar.NumericTransformer() {
             @Override
-            public int transform(int value) {
+            public int transform(int progress) {
                 int temp = 30;
-                if (0 <= value && value < 4) {
-                    temp = 1;
-                }
-                if (4 <= value && value < 8) {
+                if (0 <= progress && progress < 5)
+                {
                     temp = 2;
                 }
-                if (8 <= value && value < 12) {
+                if (5 <= progress && progress < 10)
+                {
                     temp = 4;
                 }
-                if (12 <= value && value < 16) {
+                if (110 <= progress && progress < 15)
+                {
                     temp = 6;
                 }
-                if (16 <= value && value < 20) {
+                if (15 <= progress && progress < 20)
+                {
                     temp = 8;
                 }
-                if (20 <= value && value < 24) {
+                if (20 <= progress && progress < 25)
+                {
                     temp = 15;
                 }
-                if (24 <= value && value < 28) {
+                if (25 <= progress && progress < 30)
+                {
                     temp = 30;
                 }
-                if (28 <= value && value < 32) {
+                if (30 <= progress && progress < 35)
+                {
                     temp = 60;
                 }
-                if (32 <= value && value < 36) {
+                if (35 <= progress && progress < 40)
+                {
                     temp = 100;
                 }
-                if (36 <= value && value < 40) {
+                if (40 <= progress && progress < 45)
+                {
                     temp = 125;
                 }
-                if (40 <= value && value < 44) {
+                if (45 <= progress && progress < 50)
+                {
                     temp = 250;
                 }
-                if (44 <= value && value < 48) {
+                if (50 <= progress && progress < 55)
+                {
                     temp = 500;
-                }
-                if (48 <= value && value < 52) {
+                }if (55 <= progress && progress < 60)
+                {
                     temp = 750;
-                }
-                if (52 <= value && value < 56) {
+                }if (60 <= progress && progress < 65)
+                {
                     temp = 1000;
-                }
-                if (56 <= value && value < 60) {
+                }if (65 <= progress && progress < 70)
+                {
                     temp = 1500;
                 }
-                if (60 <= value && value < 64) {
+                if (70 <= progress && progress < 75)
+                {
                     temp = 2000;
                 }
-                if (64 <= value && value < 68) {
+                if (75 <= progress && progress < 80)
+                {
                     temp = 3000;
                 }
-                if (68 <= value && value < 72) {
+                if (80 <= progress && progress < 85)
+                {
                     temp = 4000;
                 }
-                if (72 <= value && value < 76) {
+                if (85 <= progress && progress < 90)
+                {
                     temp = 6000;
                 }
-                if (76 <= value && value < 80) {
+                if (90 <= progress && progress <= 100)
+                {
                     temp = 8000;
-                }
-                if (80 <= value && value < 84) {
-                    temp = 10000;
-                }
-                if (84 <= value && value < 92) {
-                    temp = 20000;
-                }
-                if (92 <= value && value < 96) {
-                    temp = 30000;
-                }
-                if (96 <= value && value < 100) {
-                    temp = 800000;
                 }
                 return temp;
             }
@@ -992,105 +993,86 @@ public class Camera2VideoFragment extends Fragment
     }
 
     private class MySeekBarListener2 implements DiscreteSeekBar.OnProgressChangeListener {
-        //(1.2, 2, 4, 6, 8, 15, 30, 60, 100, 125, 250, 500, 750, 1000, 1500, 2000, 3000, 4000, 5000, 6000, 8000, 10000, 20000, 30000, 75000)
+        //(2, 4, 6, 8, 15, 30, 60, 100, 125, 250, 500, 750, 1000, 1500, 2000, 3000, 4000, 5000, 6000, 8000)
         double temp = 500;
         @Override
         public void onProgressChanged(DiscreteSeekBar seekBar, int progress, boolean b)
         {
 //            Log.d(TAG, "----------------------------------------"+progress);
-            if (0 <= progress && progress < 4)
-            {
-                temp = 1.2;
-            }
-            if (4 <= progress && progress < 8)
+            if (0 <= progress && progress < 5)
             {
                 temp = 2;
             }
-            if (8 <= progress && progress < 12)
+            if (5 <= progress && progress < 10)
             {
                 temp = 4;
             }
-            if (12 <= progress && progress < 16)
+            if (110 <= progress && progress < 15)
             {
                 temp = 6;
             }
-            if (16 <= progress && progress < 20)
+            if (15 <= progress && progress < 20)
             {
                 temp = 8;
             }
-            if (20 <= progress && progress < 24)
+            if (20 <= progress && progress < 25)
             {
                 temp = 15;
             }
-            if (24 <= progress && progress < 28)
+            if (25 <= progress && progress < 30)
             {
                 temp = 30;
             }
-			if (28 <= progress && progress < 32)
+			if (30 <= progress && progress < 35)
             {
                 temp = 60;
             }
-			if (32 <= progress && progress < 36)
+			if (35 <= progress && progress < 40)
             {
                 temp = 100;
             }
-			if (36 <= progress && progress < 40)
+			if (40 <= progress && progress < 45)
             {
                 temp = 125;
             }
-			if (40 <= progress && progress < 44)
+			if (45 <= progress && progress < 50)
             {
                 temp = 250;
             }
-			if (44 <= progress && progress < 48)
+			if (50 <= progress && progress < 55)
             {
                 temp = 500;
-            }if (48 <= progress && progress < 52)
+            }if (55 <= progress && progress < 60)
             {
                 temp = 750;
-            }if (52 <= progress && progress < 56)
+            }if (60 <= progress && progress < 65)
             {
                 temp = 1000;
-            }if (56 <= progress && progress < 60)
+            }if (65 <= progress && progress < 70)
             {
                 temp = 1500;
             }
-			if (60 <= progress && progress < 64)
+			if (70 <= progress && progress < 75)
             {
                 temp = 2000;
             }
-            if (64 <= progress && progress < 68)
+            if (75 <= progress && progress < 80)
             {
                 temp = 3000;
             }
-            if (68 <= progress && progress < 72)
+            if (80 <= progress && progress < 85)
             {
                 temp = 4000;
             }
-            if (72 <= progress && progress < 76)
+            if (85 <= progress && progress < 90)
             {
                 temp = 6000;
             }
-            if (76 <= progress && progress < 80)
+            if (90 <= progress && progress <= 100)
             {
                 temp = 8000;
             }
-            if (80 <= progress && progress < 84)
-            {
-                temp = 10000;
-            }
-            if (84 <= progress && progress < 92)
-            {
-                temp = 20000;
-            }
-            if (92 <= progress && progress < 96)
-            {
-                temp = 30000;
-            }
-            if (96 <= progress && progress < 100)
-            {
-                temp = 800000;
-            }
+
             if (mPreviewBuilder == null || getView() == null) {
                 return;
             }
