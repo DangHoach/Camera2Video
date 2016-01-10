@@ -1983,12 +1983,9 @@ containing a value of this type.
         public static final int abc_toolbar_collapse_description=0x7f060010;
         public static final int app_name=0x7f060012;
         public static final int camera_error=0x7f060013;
-        public static final int description_info=0x7f060014;
-        public static final int menu_settings=0x7f060015;
-        public static final int permission_request=0x7f060016;
-        public static final int record=0x7f060017;
+        public static final int menu_settings=0x7f060014;
+        public static final int permission_request=0x7f060015;
         public static final int status_bar_notification_info_overflow=0x7f060011;
-        public static final int stop=0x7f060018;
     }
     public static final class style {
         public static final int AlertDialog_AppCompat=0x7f08007c;

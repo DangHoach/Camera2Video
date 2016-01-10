@@ -2,8 +2,7 @@
 <resources>
 
     <style name="MaterialTheme" parent="android:Theme.Material.Light.NoActionBar.Fullscreen" />
-	
-	
+
 	<color name="dsb_progress_color">#ff009688</color>
     <color name="dsb_track_color">#ff939393</color>
     <color name="dsb_disabled_color">#66939393</color>

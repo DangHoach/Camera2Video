@@ -1,5 +1,4 @@
 
-
 package com.example.android.camera2video;
 
 import android.content.Context;

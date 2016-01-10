@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.hardware.camera2.CaptureRequest;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;

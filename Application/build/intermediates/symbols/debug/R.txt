@@ -650,12 +650,9 @@ int string abc_shareactionprovider_share_with_application 0x7f06000f
 int string abc_toolbar_collapse_description 0x7f060010
 int string app_name 0x7f060012
 int string camera_error 0x7f060013
-int string description_info 0x7f060014
-int string menu_settings 0x7f060015
-int string permission_request 0x7f060016
-int string record 0x7f060017
+int string menu_settings 0x7f060014
+int string permission_request 0x7f060015
 int string status_bar_notification_info_overflow 0x7f060011
-int string stop 0x7f060018
 int style AlertDialog_AppCompat 0x7f08007c
 int style AlertDialog_AppCompat_Light 0x7f08007d
 int style Animation_AppCompat_Dialog 0x7f08007e
