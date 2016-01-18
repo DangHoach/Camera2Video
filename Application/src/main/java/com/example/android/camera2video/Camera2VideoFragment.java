@@ -304,77 +304,61 @@ public class Camera2VideoFragment extends Fragment
             @Override
             public int transform(int progress) {
                 int temp = 30;
-                if (0 <= progress && progress < 5)
-                {
+                if (0 <= progress && progress < 5) {
                     temp = 2;
                 }
-                if (5 <= progress && progress < 10)
-                {
+                if (5 <= progress && progress < 10) {
                     temp = 4;
                 }
-                if (110 <= progress && progress < 15)
-                {
+                if (110 <= progress && progress < 15) {
                     temp = 6;
                 }
-                if (15 <= progress && progress < 20)
-                {
+                if (15 <= progress && progress < 20) {
                     temp = 8;
                 }
-                if (20 <= progress && progress < 25)
-                {
+                if (20 <= progress && progress < 25) {
                     temp = 15;
                 }
-                if (25 <= progress && progress < 30)
-                {
+                if (25 <= progress && progress < 30) {
                     temp = 30;
                 }
-                if (30 <= progress && progress < 35)
-                {
+                if (30 <= progress && progress < 35) {
                     temp = 60;
                 }
-                if (35 <= progress && progress < 40)
-                {
+                if (35 <= progress && progress < 40) {
                     temp = 100;
                 }
-                if (40 <= progress && progress < 45)
-                {
+                if (40 <= progress && progress < 45) {
                     temp = 125;
                 }
-                if (45 <= progress && progress < 50)
-                {
+                if (45 <= progress && progress < 50) {
                     temp = 250;
                 }
-                if (50 <= progress && progress < 55)
-                {
+                if (50 <= progress && progress < 55) {
                     temp = 500;
-                }if (55 <= progress && progress < 60)
-                {
+                }
+                if (55 <= progress && progress < 60) {
                     temp = 750;
-                }if (60 <= progress && progress < 65)
-                {
+                }
+                if (60 <= progress && progress < 65) {
                     temp = 1000;
-                }if (65 <= progress && progress < 70)
-                {
+                }
+                if (65 <= progress && progress < 70) {
                     temp = 1500;
                 }
-                if (70 <= progress && progress < 75)
-                {
+                if (70 <= progress && progress < 75) {
                     temp = 2000;
                 }
-                if (75 <= progress && progress < 80)
-                {
+                if (75 <= progress && progress < 80) {
                     temp = 3000;
                 }
-                if (80 <= progress && progress < 85)
-                {
+                if (80 <= progress && progress < 85) {
                     temp = 4000;
                 }
-                if (85 <= progress && progress < 90)
-                {
+                if (85 <= progress && progress < 90) {
                     temp = 6000;
                 }
-                if (90 <= progress && progress <= 100)
-                {
+                if (90 <= progress && progress <= 100) {
                     temp = 8000;
                 }
                 return temp;
@@ -466,47 +450,36 @@ public class Camera2VideoFragment extends Fragment
             {
                 case "3264x2448":
                     mvalueVideoSize = 0;
-//                    Log.d(TAG, "-3264x2448");
                     break;
                 case "3200x2400":
                     mvalueVideoSize = 1;
-//                    Log.d(TAG, "-3200x2400");
                     break;
                 case "2592x1944":
                     mvalueVideoSize = 2;
-//                    Log.d(TAG, "-2592x1944");
                     break;
                 case "2048x1536":
                     mvalueVideoSize = 3;
-//                    Log.d(TAG, "-2048x1536");
                     break;
                 case "1920x1080":
                     mvalueVideoSize = 4;
-//                    Log.d(TAG, "-1920x1080");
                     break;
                 case "1600x1200":
                     mvalueVideoSize = 5;
-//                    Log.d(TAG, "-1600x1200");
                     break;
                 case "1280x960":
                     mvalueVideoSize = 6;
-//                    Log.d(TAG, "-1280x960");
                     break;
                 case "1280x768":
                     mvalueVideoSize = 7;
-//                    Log.d(TAG, "-1280x768");
                     break;
                 case "1280x720":
                     mvalueVideoSize = 8;
-//                    Log.d(TAG, "-1280x720");
                     break;
                 case "1024x768":
                     mvalueVideoSize = 9;
-//                    Log.d(TAG, "-1024x768");
                     break;
                 default:
                     mvalueVideoSize = 5;
-//                    Log.d(TAG, "-default-1280x720");
                     break;
             }
         }
@@ -622,77 +595,74 @@ public class Camera2VideoFragment extends Fragment
         mCameraManager = (CameraManager) activity.getSystemService(Context.CAMERA_SERVICE);
 
         try {
-//            Log.d(TAG, "tryAcquire");
+
             if (!mCameraOpenCloseLock.tryAcquire(2500, TimeUnit.MILLISECONDS)) {
                 throw new RuntimeException("Time out waiting to lock camera opening.");
             }
             // Choose the sizes for camera preview and video recording
             CameraCharacteristics characteristics = mCameraManager.getCameraCharacteristics(mCameraId);
 
-
             StreamConfigurationMap map = characteristics
                     .get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
 //            mVideoSize = chooseVideoSize(map.getOutputSizes(MediaRecorder.class));
-//            mVideoSize = Collections.max(Arrays.asList(map.getOutputSizes(ImageFormat.JPEG)), new CompareSizesByArea());//            mVideoSize = sizes[5];
-//            final Size sizeLow = sizes[5];
-//            final Size sizeHigh = sizes[0];
-//            Size[] sizes2 = map.getOutputSizes(MediaRecorder.class);
-//            for(int i = 0 ; i<= 5; i++)
-//            {
-//                final Size sizedetect = sizes2[i];
-//                Log.d(TAG, "-----------------------------------------sizedetect"+sizedetect.getWidth()+"--"+sizedetect.getHeight());
-//            }
             Size[] sizes = map.getOutputSizes(MediaRecorder.class);
-
-            switch (mvalueVideoSize)
+            if(mCameraId.contains("0"))
             {
-                case 0:
-                    mVideoSize = sizes[0];
-                    break;
-                case 1:
-                    mVideoSize = sizes[1];
-                    break;
-                case 2:
-                    mVideoSize = sizes[2];
-                    break;
-                case 3:
-                    mVideoSize = sizes[3];
-                    break;
-                case 4:
-                    mVideoSize = sizes[4];
-                    break;
-                case 5:
-                    mVideoSize = sizes[5];
-                    break;
-                case 6:
-                    mVideoSize = sizes[6];
-                    break;
-                case 7:
-                    mVideoSize = sizes[7];
-                    break;
-                case 8:
-                    mVideoSize = sizes[8];
-                    break;
-                case 9:
-                    mVideoSize = sizes[9];
-                    break;
-                default:
-                    mVideoSize = sizes[8];
-                    break;
+                switch (mvalueVideoSize)
+                {
+                    case 0:
+                        mVideoSize = sizes[0];
+                        break;
+                    case 1:
+                        mVideoSize = sizes[1];
+                        break;
+                    case 2:
+                        mVideoSize = sizes[2];
+                        break;
+                    case 3:
+                        mVideoSize = sizes[3];
+                        break;
+                    case 4:
+                        mVideoSize = sizes[4];
+                        break;
+                    case 5:
+                        mVideoSize = sizes[5];
+                        break;
+                    case 6:
+                        mVideoSize = sizes[6];
+                        break;
+                    case 7:
+                        mVideoSize = sizes[7];
+                        break;
+                    case 8:
+                        mVideoSize = sizes[8];
+                        break;
+                    case 9:
+                        mVideoSize = sizes[9];
+                        break;
+                    default:
+                        mVideoSize = sizes[8];
+                        break;
 
+                }
+                mPreviewSize = sizes[4];// Set preview Ful HD 1920x1080
             }
-            if(mCameraId.contains("1"))
+            else
             {
-                mVideoSize = sizes[8];
+                mVideoSize = sizes[2];
+                mPreviewSize = sizes[2];// Set preview HD 1280x720
             }
 //            Log.d(TAG, "--size select"+mVideoSize.getWidth()+"--"+mVideoSize.getHeight());
-            mPreviewSize = chooseOptimalSize(map.getOutputSizes(SurfaceTexture.class),
-                    width, height, mVideoSize);
+//            mPreviewSize = chooseOptimalSize(map.getOutputSizes(SurfaceTexture.class),
+//                    width, height, mVideoSize);
 
             int orientation = getResources().getConfiguration().orientation;
             if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+
                 mTextureView.setAspectRatio(mPreviewSize.getWidth(), mPreviewSize.getHeight());
-            } else {
+            }
+            else {
+
                 mTextureView.setAspectRatio(mPreviewSize.getHeight(), mPreviewSize.getWidth());
             }
             configureTransform(width, height);
@@ -750,7 +720,7 @@ public class Camera2VideoFragment extends Fragment
                 request.set(CaptureRequest.SENSOR_EXPOSURE_TIME, exposureDuration);
 //                request.set(CaptureRequest.SENSOR_SENSITIVITY, SettingCamera.iso);
 //        }
-//        request.set(CaptureRequest.SENSOR_FRAME_DURATION, minFrameDuration)
+//        request.set(CaptureRequest.SENSOR_FRAME_DURATION, minFrameDuration);
     }
     /**
      * Start the camera preview.
