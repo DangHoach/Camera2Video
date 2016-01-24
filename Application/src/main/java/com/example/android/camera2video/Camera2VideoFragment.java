@@ -93,6 +93,11 @@ public class Camera2VideoFragment extends Fragment
     private ImageView btnCapture;
 
     /**
+     * Button to  change
+     */
+    ImageView btnCamera;
+
+    /**
      * A refernce to the opened {@link android.hardware.camera2.CameraDevice}.
      */
     private CameraDevice mCameraDevice;
@@ -302,7 +307,7 @@ public class Camera2VideoFragment extends Fragment
         ImageView btnSetting = (ImageView) view.findViewById(R.id.btn_setting);
         btnSetting.setOnClickListener(this);
 
-        ImageView btnCamera = (ImageView) view.findViewById(R.id.btn_camera);
+        btnCamera = (ImageView) view.findViewById(R.id.btn_camera);
         btnCamera.setOnClickListener(this);
 
         discreteSeekBar = (DiscreteSeekBar) view.findViewById(R.id.discrete1);
@@ -976,7 +981,7 @@ public class Camera2VideoFragment extends Fragment
             // UI
             btnCapture.setImageResource(R.drawable.btn_cam_pressed);
             mIsRecordingVideo = true;
-
+            btnCamera.setEnabled(false);
             // Start recording
             mMediaRecorder.start();
 
@@ -990,6 +995,7 @@ public class Camera2VideoFragment extends Fragment
         // UI
         mIsRecordingVideo = false;
         btnCapture.setImageResource(R.drawable.btn_cam);
+        btnCamera.setEnabled(true);
         // Stop recording
         mMediaRecorder.stop();
         mMediaRecorder.reset();
