@@ -15,12 +15,20 @@
      <!--/>-->
 
      <ListPreference
-         android:key="listpref"
-         android:title="List Resolution "
-         android:entries="@array/listOptions"
-         android:entryValues="@array/listValues"
+         android:key="listBack"
+         android:title="List Back Resolution "
+         android:entries="@array/listOptions1"
+         android:entryValues="@array/listValues1"
          android:summary="%s"
-         android:defaultValue="1280x720"
+         android:defaultValue="3840x2160"
+         />
+     <ListPreference
+         android:key="listFont"
+         android:title="List Font Resolution "
+         android:entries="@array/listOptions2"
+         android:entryValues="@array/listValues2"
+         android:summary="%s"
+         android:defaultValue="2592x1944"
          />
     <Preference android:title="web page support" >
         <intent android:action="android.intent.action.VIEW"

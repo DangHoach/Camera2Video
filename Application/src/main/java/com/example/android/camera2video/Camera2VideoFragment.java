@@ -157,8 +157,6 @@ public class Camera2VideoFragment extends Fragment
 
     static boolean isBackCamera = true;
 
-    public static int mvalueVideoSize;
-
     /**
      * Camera preview.
      */
@@ -259,27 +257,44 @@ public class Camera2VideoFragment extends Fragment
      * @param aspectRatio The aspect ratio
      * @return The optimal {@code Size}, or an arbitrary one if none were big enough
      */
-    private static Size chooseOptimalSize(Size[] choices, int width, int height, Size aspectRatio) {
+//    private static Size chooseOptimalSize(Size[] choices, int width, int height, Size aspectRatio) {
+//        // Collect the supported resolutions that are at least as big as the preview Surface
+//        List<Size> bigEnough = new ArrayList<Size>();
+//        int w = aspectRatio.getWidth();
+//        int h = aspectRatio.getHeight();
+//        for (Size option : choices) {
+//            if (option.getHeight() == option.getWidth() * h / w &&
+//                    option.getWidth() <= width && option.getHeight() <= height) {
+//                bigEnough.add(option);
+//            }
+//        }
+//
+//        // Pick the smallest of those, assuming we found any
+//        if (bigEnough.size() > 0) {
+//            return Collections.max(bigEnough, new CompareSizesByArea());
+//        } else {
+////            Log.e(TAG, "Couldn't find any suitable preview size");
+//            return choices[0];
+//        }
+//    }
+
+    private static Size chooseOptimalSize(Size[] choices, int width, int height) {
         // Collect the supported resolutions that are at least as big as the preview Surface
         List<Size> bigEnough = new ArrayList<Size>();
-        int w = aspectRatio.getWidth();
-        int h = aspectRatio.getHeight();
         for (Size option : choices) {
-            if (option.getHeight() == option.getWidth() * h / w &&
-                    option.getWidth() <= width && option.getHeight() <= height) {
+            if (option.getHeight() == option.getWidth() * height / width &&
+                    option.getWidth() >= width && option.getHeight() >= height) {
                 bigEnough.add(option);
             }
         }
-
         // Pick the smallest of those, assuming we found any
         if (bigEnough.size() > 0) {
-            return Collections.max(bigEnough, new CompareSizesByArea());
+            return Collections.min(bigEnough, new CompareSizesByArea());
         } else {
-//            Log.e(TAG, "Couldn't find any suitable preview size");
+            Log.e(TAG, "Couldn't find any suitable preview size"+choices[0].getWidth()+"--"+choices[0].getHeight());
             return choices[0];
         }
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -467,55 +482,111 @@ public class Camera2VideoFragment extends Fragment
 
     }
 
-
+    static  int indexBackCameraResolution =0;
+    static  int indexFontCameraResolution =0;
     private void displayUserSettings()
     {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String prefList = sharedPrefs.getString("listpref", "NULL");
-
+        String prefBack = sharedPrefs.getString("listBack", "NULL");
+        String prefFont = sharedPrefs.getString("listFont", "NULL");
         if(mCameraId.contains("0"))
         {
-            switch (prefList)
+            switch (prefBack)
             {
-                case "3264x2448":
-                    mvalueVideoSize = 0;
+                case "3840x2160":
+                    indexBackCameraResolution = 0;
+                    break;
+                case "3288x2480":
+                    indexBackCameraResolution = 1;
                     break;
                 case "3200x2400":
-                    mvalueVideoSize = 1;
+                    indexBackCameraResolution = 2;
+                    break;
+                case "2976x2976":
+                    indexBackCameraResolution = 3;
                     break;
                 case "2592x1944":
-                    mvalueVideoSize = 2;
+                    indexBackCameraResolution = 4;
+                    break;
+                case "2688x1512":
+                    indexBackCameraResolution = 5;
                     break;
                 case "2048x1536":
-                    mvalueVideoSize = 3;
+                    indexBackCameraResolution = 6;
                     break;
                 case "1920x1080":
-                    mvalueVideoSize = 4;
+                    indexBackCameraResolution = 7;
                     break;
                 case "1600x1200":
-                    mvalueVideoSize = 5;
+                    indexBackCameraResolution = 8;
+                    break;
+                case "1440x1080":
+                    indexBackCameraResolution = 9;
                     break;
                 case "1280x960":
-                    mvalueVideoSize = 6;
+                    indexBackCameraResolution = 10;
                     break;
                 case "1280x768":
-                    mvalueVideoSize = 7;
+                    indexBackCameraResolution = 11;
                     break;
                 case "1280x720":
-                    mvalueVideoSize = 8;
+                    indexBackCameraResolution = 12;
                     break;
                 case "1024x768":
-                    mvalueVideoSize = 9;
+                    indexBackCameraResolution = 13;
+                    break;
+                case "800x600":
+                    indexBackCameraResolution = 14;
+                    break;
+                case "864x480":
+                    indexBackCameraResolution = 15;
                     break;
                 default:
-                    mvalueVideoSize = 5;
+                    indexBackCameraResolution = 7;
                     break;
             }
         }
         else
         {
-            // code
-            mvalueVideoSize = 0;
+            switch (prefFont)
+            {
+                case "2592x1944":
+                    indexFontCameraResolution = 0;
+                    break;
+                case "2048x1536":
+                    indexFontCameraResolution = 1;
+                    break;
+                case "1920x1080":
+                    indexFontCameraResolution = 2;
+                    break;
+                case "1600x1200":
+                    indexFontCameraResolution = 3;
+                    break;
+                case "1440x1080":
+                    indexFontCameraResolution = 4;
+                    break;
+                case "1280x960":
+                    indexFontCameraResolution = 5;
+                    break;
+                case "1280x768":
+                    indexFontCameraResolution = 6;
+                    break;
+                case "1280x720":
+                    indexFontCameraResolution = 7;
+                    break;
+                case "1024x768":
+                    indexFontCameraResolution = 8;
+                    break;
+                case "800x600":
+                    indexFontCameraResolution = 9;
+                    break;
+                case "864x480":
+                    indexFontCameraResolution = 10;
+                    break;
+                default:
+                    indexFontCameraResolution = 7;
+                    break;
+            }
         }
     }
 
@@ -601,6 +672,7 @@ public class Camera2VideoFragment extends Fragment
         return true;
     }
 
+
     /**
      * Tries to open a {@link CameraDevice}. The result is listened by `mStateCallback`.
      */
@@ -629,65 +701,22 @@ public class Camera2VideoFragment extends Fragment
             Size[] sizes = map.getOutputSizes(MediaRecorder.class);
             if(mCameraId.contains("0"))
             {
-                switch (mvalueVideoSize)
-                {
-                    case 0:
-                        mVideoSize = sizes[0];
-                        break;
-                    case 1:
-                        mVideoSize = sizes[1];
-                        break;
-                    case 2:
-                        mVideoSize = sizes[2];
-                        break;
-                    case 3:
-                        mVideoSize = sizes[3];
-                        break;
-                    case 4:
-                        mVideoSize = sizes[4];
-                        break;
-                    case 5:
-                        mVideoSize = sizes[5];
-                        break;
-                    case 6:
-                        mVideoSize = sizes[6];
-                        break;
-                    case 7:
-                        mVideoSize = sizes[7];
-                        break;
-                    case 8:
-                        mVideoSize = sizes[8];
-                        break;
-                    case 9:
-                        mVideoSize = sizes[9];
-                        break;
-                    default:
-                        mVideoSize = sizes[8];
-                        break;
-
-                }
+                mVideoSize = sizes[indexBackCameraResolution+2];
             }
             else
             {
-                mVideoSize = sizes[0];
+                mVideoSize = sizes[0+indexFontCameraResolution];
             }
-//            Log.d(TAG, "-open -mVideoSize"+mVideoSize.getWidth()+"--"+mVideoSize.getHeight());
+//            Log.d(TAG, "reOpenCamera-- mVideoSize"+mVideoSize.getWidth()+"--"+mVideoSize.getHeight());
             mPreviewSize = chooseOptimalSize(map.getOutputSizes(SurfaceTexture.class),
-                    width, height, mVideoSize);
-
+                    width, height);
             int orientation = getResources().getConfiguration().orientation;
-            if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                if(mVideoSize.getWidth() == 1920 && mVideoSize.getHeight()==1080)
-                {
-                    mPreviewSize = sizes[6];
-                }
+            if (orientation == Configuration.ORIENTATION_LANDSCAPE)
+            {
                 mTextureView.setAspectRatio(mPreviewSize.getWidth(), mPreviewSize.getHeight());
             }
-            else {
-                if(mVideoSize.getWidth() == 1920 && mVideoSize.getHeight()==1080)
-                {
-                    mPreviewSize = sizes[9];
-                }
+            else
+            {
                 mTextureView.setAspectRatio(mPreviewSize.getHeight(), mPreviewSize.getWidth());
             }
             configureTransform(width, height);
@@ -706,7 +735,6 @@ public class Camera2VideoFragment extends Fragment
         }
     }
     private void reOpenCamera(int viewWidth, int viewHeight) {
-
         try {
             mCameraOpenCloseLock.acquire();
             if (null != mCameraDevice) {
@@ -728,65 +756,26 @@ public class Camera2VideoFragment extends Fragment
             StreamConfigurationMap map = characteristics
                     .get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
             Size[] sizes = map.getOutputSizes(MediaRecorder.class);
+
             if(mCameraId.contains("0"))
             {
-                switch (mvalueVideoSize)
-                {
-                    case 0:
-                        mVideoSize = sizes[0];
-                        break;
-                    case 1:
-                        mVideoSize = sizes[1];
-                       break;
-                    case 2:
-                        mVideoSize = sizes[2];
-                        break;
-                    case 3:
-                        mVideoSize = sizes[3];
-                        break;
-                    case 4:
-                        mVideoSize = sizes[4];
-                        break;
-                    case 5:
-                        mVideoSize = sizes[5];
-                        break;
-                    case 6:
-                        mVideoSize = sizes[6];
-                        break;
-                    case 7:
-                        mVideoSize = sizes[7];
-                        break;
-                    case 8:
-                        mVideoSize = sizes[8];
-                        break;
-                    case 9:
-                        mVideoSize = sizes[9];
-                        break;
-                    default:
-                        mVideoSize = sizes[8];
-                        break;
-
-                }
+                mVideoSize = sizes[indexBackCameraResolution+2];
             }
             else
             {
-                mVideoSize = sizes[0];
+                mVideoSize = sizes[indexFontCameraResolution+0];
             }
-//            Log.d(TAG, "-- mVideoSize"+mVideoSize.getWidth()+"--"+mVideoSize.getHeight());
+//            Log.d(TAG, "reOpenCamera-- mVideoSize"+mVideoSize.getWidth()+"--"+mVideoSize.getHeight());
             mPreviewSize = chooseOptimalSize(map.getOutputSizes(SurfaceTexture.class),
-                    viewWidth, viewHeight, mVideoSize);
+                    viewWidth, viewHeight);
             int orientation = getResources().getConfiguration().orientation;
-            if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                if(mVideoSize.getWidth() == 1920 && mVideoSize.getHeight()==1080)
-                {
-                    mPreviewSize = sizes[6];
-                }
+            if (orientation == Configuration.ORIENTATION_LANDSCAPE)
+            {
+
                 mTextureView.setAspectRatio(mPreviewSize.getWidth(), mPreviewSize.getHeight());
-            } else {
-                if(mVideoSize.getWidth() == 1920 && mVideoSize.getHeight()==1080)
-                {
-                    mPreviewSize = sizes[9];
-                }
+            }
+            else
+            {
                 mTextureView.setAspectRatio(mPreviewSize.getHeight(), mPreviewSize.getWidth());
             }
             configureTransform(viewWidth, viewHeight);

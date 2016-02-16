@@ -36,11 +36,11 @@
         android:layout_marginBottom="20dp">
 
         <ImageView
-            android:id="@+id/btn_album"
+            android:id="@+id/btn_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dip"
-            android:src="@drawable/btn_album"
+            android:src="@drawable/btn_change_camera_normal"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="50dip" />
@@ -61,18 +61,10 @@
             android:layout_alignParentLeft="false"
             android:layout_alignParentStart="false"
             android:layout_alignWithParentIfMissing="false"
-            android:layout_alignEnd="@+id/btn_album"
+            android:layout_alignEnd="@+id/btn_camera"
             android:layout_marginBottom="70dip"
             android:layout_alignParentEnd="false" />
 
     </RelativeLayout>
 
-    <ImageView
-        android:id="@+id/btn_camera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dip"
-        android:src="@drawable/btn_change_camera_normal"
-        android:layout_alignParentTop="true"
-        android:layout_toStartOf="@+id/layout_capture" />
 </RelativeLayout>
