@@ -30,13 +30,13 @@
         android:layout_alignParentLeft="false">
 
         <ImageView
-            android:id="@+id/btn_album"
+            android:id="@+id/btn_camera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
             android:layout_marginLeft="20dip"
-            android:src="@drawable/btn_album"
+            android:src="@drawable/btn_change_camera_normal"
             android:layout_alignParentTop="false" />
 
         <ImageView
@@ -54,6 +54,7 @@
             android:layout_centerInParent="true"
             android:layout_marginRight="20dip"
             android:background="@drawable/btn_setting"/>
+
     </RelativeLayout>
 </RelativeLayout>
 <!-- From: file:/Users/applelike/Desktop/Camera2Video/Application/src/main/res/layout/fragment_camera2_video.xml -->
