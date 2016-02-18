@@ -16,7 +16,6 @@ import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -33,7 +32,7 @@ import com.example.android.camera2video.internal.drawable.TrackRectDrawable;
 
 import java.util.Formatter;
 import java.util.Locale;
-import com.example.android.camera2video.Camera2VideoFragment;
+
 public class DiscreteSeekBar extends View {
 
     /**

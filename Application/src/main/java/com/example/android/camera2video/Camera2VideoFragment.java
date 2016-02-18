@@ -236,15 +236,15 @@ public class Camera2VideoFragment extends Fragment
      * @param choices The list of available sizes
      * @return The video size
      */
-    private static Size chooseVideoSize(Size[] choices) {
-        for (Size size : choices) {
-            if (size.getWidth() == size.getHeight() * 16 / 9 && size.getHeight() <= 1080) {
-                return size;
-            }
-        }
-        Log.e(TAG, "Couldn't find any suitable video size");
-        return choices[choices.length - 1];
-    }
+//    private static Size chooseVideoSize(Size[] choices) {
+//        for (Size size : choices) {
+//            if (size.getWidth() == size.getHeight() * 16 / 9 && size.getHeight() <= 1080) {
+//                return size;
+//            }
+//        }
+//        Log.e(TAG, "Couldn't find any suitable video size");
+//        return choices[choices.length - 1];
+//    }
 
     /**
      * Given {@code choices} of {@code Size}s supported by a camera, chooses the smallest one whose
@@ -289,9 +289,9 @@ public class Camera2VideoFragment extends Fragment
         }
         // Pick the smallest of those, assuming we found any
         if (bigEnough.size() > 0) {
-            return Collections.min(bigEnough, new CompareSizesByArea());
+            return Collections.max(bigEnough, new CompareSizesByArea());
         } else {
-            Log.e(TAG, "Couldn't find any suitable preview size"+choices[0].getWidth()+"--"+choices[0].getHeight());
+//            Log.e(TAG, "Couldn't find any suitable preview size"+choices[0].getWidth()+"--"+choices[0].getHeight());
             return choices[0];
         }
     }
@@ -308,7 +308,7 @@ public class Camera2VideoFragment extends Fragment
         if (bundle != null) {
             mCameraId = bundle.getString("cameraid");
         } else {
-            mCameraId = PreferenceHelper.getCurrentCameraid(getActivity());
+            mCameraId = "0";
             isBackCamera = true;
         }
 
