@@ -79,7 +79,7 @@ public class Camera2VideoFragment extends Fragment
         ORIENTATIONS.append(Surface.ROTATION_270, 180);
     }
 	public static float focusDistance;
-	public static long exposureDuration =1000000000l / 30;
+	public static long exposureDuration =1000000000l / 8000;
 	public static int iso = 4000;
 	
     /**
@@ -329,64 +329,7 @@ public class Camera2VideoFragment extends Fragment
         discreteSeekBar.setNumericTransformer(new DiscreteSeekBar.NumericTransformer() {
             @Override
             public int transform(int progress) {
-                int temp = 30;
-                if (0 <= progress && progress < 5) {
-                    temp = 2;
-                }
-                if (5 <= progress && progress < 10) {
-                    temp = 4;
-                }
-                if (110 <= progress && progress < 15) {
-                    temp = 6;
-                }
-                if (15 <= progress && progress < 20) {
-                    temp = 8;
-                }
-                if (20 <= progress && progress < 25) {
-                    temp = 15;
-                }
-                if (25 <= progress && progress < 30) {
-                    temp = 30;
-                }
-                if (30 <= progress && progress < 35) {
-                    temp = 60;
-                }
-                if (35 <= progress && progress < 40) {
-                    temp = 100;
-                }
-                if (40 <= progress && progress < 45) {
-                    temp = 125;
-                }
-                if (45 <= progress && progress < 50) {
-                    temp = 250;
-                }
-                if (50 <= progress && progress < 55) {
-                    temp = 500;
-                }
-                if (55 <= progress && progress < 60) {
-                    temp = 750;
-                }
-                if (60 <= progress && progress < 65) {
-                    temp = 1000;
-                }
-                if (65 <= progress && progress < 70) {
-                    temp = 1500;
-                }
-                if (70 <= progress && progress < 75) {
-                    temp = 2000;
-                }
-                if (75 <= progress && progress < 80) {
-                    temp = 3000;
-                }
-                if (80 <= progress && progress < 85) {
-                    temp = 4000;
-                }
-                if (85 <= progress && progress < 90) {
-                    temp = 6000;
-                }
-                if (90 <= progress && progress <= 100) {
-                    temp = 8000;
-                }
+                int temp = progress;
                 return temp;
             }
         });
@@ -1070,86 +1013,11 @@ public class Camera2VideoFragment extends Fragment
     }
 
     private class MySeekBarListener2 implements DiscreteSeekBar.OnProgressChangeListener {
-        //(2, 4, 6, 8, 15, 30, 60, 100, 125, 250, 500, 750, 1000, 1500, 2000, 3000, 4000, 5000, 6000, 8000)
-        double temp = 500;
         @Override
         public void onProgressChanged(DiscreteSeekBar seekBar, int progress, boolean b)
         {
 //            Log.d(TAG, "----------------------------------------"+progress);
-            if (0 <= progress && progress < 5)
-            {
-                temp = 2;
-            }
-            if (5 <= progress && progress < 10)
-            {
-                temp = 4;
-            }
-            if (110 <= progress && progress < 15)
-            {
-                temp = 6;
-            }
-            if (15 <= progress && progress < 20)
-            {
-                temp = 8;
-            }
-            if (20 <= progress && progress < 25)
-            {
-                temp = 15;
-            }
-            if (25 <= progress && progress < 30)
-            {
-                temp = 30;
-            }
-			if (30 <= progress && progress < 35)
-            {
-                temp = 60;
-            }
-			if (35 <= progress && progress < 40)
-            {
-                temp = 100;
-            }
-			if (40 <= progress && progress < 45)
-            {
-                temp = 125;
-            }
-			if (45 <= progress && progress < 50)
-            {
-                temp = 250;
-            }
-			if (50 <= progress && progress < 55)
-            {
-                temp = 500;
-            }if (55 <= progress && progress < 60)
-            {
-                temp = 750;
-            }if (60 <= progress && progress < 65)
-            {
-                temp = 1000;
-            }if (65 <= progress && progress < 70)
-            {
-                temp = 1500;
-            }
-			if (70 <= progress && progress < 75)
-            {
-                temp = 2000;
-            }
-            if (75 <= progress && progress < 80)
-            {
-                temp = 3000;
-            }
-            if (80 <= progress && progress < 85)
-            {
-                temp = 4000;
-            }
-            if (85 <= progress && progress < 90)
-            {
-                temp = 6000;
-            }
-            if (90 <= progress && progress <= 100)
-            {
-                temp = 8000;
-            }
-
+            double temp = progress;
             if (mPreviewBuilder == null || getView() == null) {
                 return;
             }
@@ -1161,14 +1029,10 @@ public class Camera2VideoFragment extends Fragment
 
         @Override
         public void onStartTrackingTouch(DiscreteSeekBar seekBar) {
-//            mSeekBarTextView.setVisibility(View.VISIBLE);
-//            mSeekBarTextView.startAnimation(mAlphaInAnimation);
         }
 
         @Override
         public void onStopTrackingTouch(DiscreteSeekBar seekBar) {
-//            mSeekBarTextView.startAnimation(mAlphaOutAnimation);
-//           mSeekBarTextView.setVisibility(View.INVISIBLE);
         }
 
 

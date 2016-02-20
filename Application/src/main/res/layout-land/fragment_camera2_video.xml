@@ -18,9 +18,9 @@
         android:id="@+id/discrete1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:dsb_min="0"
-        app:dsb_max="100"
-        app:dsb_value="30"
+        app:dsb_min="1"
+        app:dsb_max="8000"
+        app:dsb_value="8000"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/layout_capture" />
